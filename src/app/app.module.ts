@@ -21,7 +21,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TaskService } from './services/task.service';
 import { AuthService } from './services/auth.service';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,9 @@ import { AuthService } from './services/auth.service';
     MatGridListModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
   ],
   providers: [TaskService, AuthService],
   bootstrap: [AppComponent],

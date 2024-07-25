@@ -25,6 +25,7 @@ export class TaskFormComponent implements OnInit {
       description: ['', Validators.required],
       status: [],
       priority: [],
+      dueDate: [],
     });
   }
 
@@ -44,6 +45,7 @@ export class TaskFormComponent implements OnInit {
               description: task.description,
               status: task.status,
               priority: task.priority,
+              dueDate: task.dueDate ? new Date(task.dueDate) : null,
             });
           } else {
             console.log('Task not found');
@@ -56,9 +58,11 @@ export class TaskFormComponent implements OnInit {
   onSubmit(): void {
     if (this.taskForm.valid) {
       if (this.taskId) {
-        this.taskService.updateTask(this.taskForm.value, this.taskId).subscribe((res) => {
-          this.router.navigate(['/tasks']);
-        });
+        this.taskService
+          .updateTask(this.taskForm.value, this.taskId)
+          .subscribe((res) => {
+            this.router.navigate(['/tasks']);
+          });
       } else {
         this.taskService.createTask(this.taskForm.value).subscribe((res) => {
           this.router.navigate(['/tasks']);
