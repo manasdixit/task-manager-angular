@@ -4,7 +4,20 @@
   margin-bottom: 20px;
 }
 
+.mat-raised-button.custom-red-button {
+  background-color: red;
+  color: white;
+}
+
+.mat-raised-button.custom-red-button:hover {
+  background-color: darkred;
+}
+
+.border-button {
+  border: 1px solid #ccc; /* Adjust the color and width as needed */
+}
 .task-card {
-  width: 100%;
-  margin-bottom: 20px;
+  margin: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

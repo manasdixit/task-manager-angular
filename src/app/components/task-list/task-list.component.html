@@ -1,10 +1,25 @@
 <div class="filter-bar">
-  <button mat-button (click)="filterTasks('all')">All</button>
-  <button mat-button (click)="filterTasks('completed')">Completed</button>
-  <button mat-button (click)="filterTasks('pending')">Pending</button>
-  <button mat-raised-button color="primary" (click)="addTask()">
+  <button mat-button class="border-button" (click)="filterTasks('all')">
+    All
+  </button>
+  <button mat-button class="border-button" (click)="filterTasks('completed')">
+    Completed
+  </button>
+  <button mat-button class="border-button" (click)="filterTasks('pending')">
+    Pending
+  </button>
+  <button mat-button class="border-button" (click)="filterTasks('in progress')">
+    In-progress
+  </button>
+  <button
+    style="margin-left: 60px"
+    mat-raised-button
+    class="custom-red-button"
+    (click)="addTask()"
+  >
     Add Task
   </button>
+  <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
 </div>
 
 <div fxLayout="row wrap" fxLayoutGap="16px" *ngIf="filteredTasks.length > 0">
@@ -15,14 +30,32 @@
     *ngFor="let task of filteredTasks"
   >
     <mat-card class="task-card">
-      <mat-card-title>{{ task.title }}</mat-card-title>
-      <mat-card-content>{{ task.description }}</mat-card-content>
-      <mat-card-content>Due Date: {{ task.dueDate | date }}</mat-card-content>
-      <mat-card-content>Status: {{ task.status }}</mat-card-content>
+      <mat-card-title
+        style="margin-left: 14px; font-weight: bold; font-style:normal"
+      >
+        {{ task.title.toLocaleUpperCase() }}
+      </mat-card-title>
+      <mat-card-content>Description :: {{ task.description }}</mat-card-content>
+      <mat-card-content>Due Date :: {{ task.dueDate | date }}</mat-card-content>
+      <mat-card-content>Status :: {{ task.status }}</mat-card-content>
       <mat-card-content>Priority: {{ task.priority }}</mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="editTask(task)">Edit</button>
-        <button mat-button (click)="deleteTask(task.id)">Delete</button>
+        <button
+          mat-button
+          class="border-button"
+          style="color: blue"
+          (click)="editTask(task)"
+        >
+          Edit
+        </button>
+        <button
+          mat-button
+          class="border-button"
+          style="color: brown"
+          (click)="deleteTask(task)"
+        >
+          Delete
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

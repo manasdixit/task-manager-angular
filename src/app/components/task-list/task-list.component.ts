@@ -9,12 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [];
-  filteredTasks: Task[] = [];
+  tasks: any[] = [];
+  filteredTasks: any[] = [];
 
   constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit(): void {
+    this.getAllTasks();
+  }
+
+  getAllTasks() {
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
@@ -23,21 +27,21 @@ export class TaskListComponent implements OnInit {
   }
 
   editTask(task: any) {
-    // Navigate to edit task component
     this.router.navigate(['/tasks/edit', task._id]);
   }
 
-  deleteTask(taskId: string) {
-    // Call delete API and update the tasks list
-    this.taskService.deleteTask(taskId).subscribe(() => {
-      this.tasks = this.tasks.filter(task => task.id !== taskId);
-      this.filteredTasks = this.filteredTasks.filter(task => task.id !== taskId);
+  deleteTask(task: any) {
+    console.log('taskId :: ', task._id);
+    this.taskService.deleteTask(task._id).subscribe((res) => {
+      this.getAllTasks();
     });
   }
 
   addTask() {
     this.router.navigate(['/tasks/new']);
   }
+
+  logOut() {}
 
   filterTasks(status: string): void {
     if (status === 'all') {

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
