@@ -1,8 +1,8 @@
-<div class="filter-bar">
+<div class="filter-bar" style="margin-top: 20px;">
   <button
     mat-button
     class="border-button"
-    style="color: blue"
+    style="color: blue; margin-left: 40px;"
     (click)="filterTasks('all')"
   >
     All
@@ -33,20 +33,13 @@
   </button>
   <button
     mat-raised-button
-    style="color:cornflowerblue; margin-left: 120px"
+    style="color: cornflowerblue; margin-left: 120px"
     class="custom-red-button"
     (click)="addTask()"
   >
     Add Task
   </button>
-  <button
-    style="color: darksalmon"
-    mat-raised-button
-    color="warn"
-    (click)="logOut()"
-  >
-    Log Out
-  </button>
+  <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
 </div>
 
 <div fxLayout="row wrap" fxLayoutGap="16px" *ngIf="filteredTasks.length > 0">
