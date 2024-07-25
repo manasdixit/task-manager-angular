@@ -1,25 +1,52 @@
 <div class="filter-bar">
-  <button mat-button class="border-button" (click)="filterTasks('all')">
+  <button
+    mat-button
+    class="border-button"
+    style="color: blue"
+    (click)="filterTasks('all')"
+  >
     All
   </button>
-  <button mat-button class="border-button" (click)="filterTasks('completed')">
+  <button
+    mat-button
+    class="border-button"
+    style="color: darkcyan"
+    (click)="filterTasks('completed')"
+  >
     Completed
   </button>
-  <button mat-button class="border-button" (click)="filterTasks('pending')">
+  <button
+    mat-button
+    class="border-button"
+    style="color: darkgoldenrod"
+    (click)="filterTasks('pending')"
+  >
     Pending
   </button>
-  <button mat-button class="border-button" (click)="filterTasks('in progress')">
+  <button
+    mat-button
+    class="border-button"
+    style="color: darkslateblue"
+    (click)="filterTasks('in progress')"
+  >
     In-progress
   </button>
   <button
-    style="margin-left: 60px"
     mat-raised-button
+    style="color:cornflowerblue; margin-left: 120px"
     class="custom-red-button"
     (click)="addTask()"
   >
     Add Task
   </button>
-  <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+  <button
+    style="color: darksalmon"
+    mat-raised-button
+    color="warn"
+    (click)="logOut()"
+  >
+    Log Out
+  </button>
 </div>
 
 <div fxLayout="row wrap" fxLayoutGap="16px" *ngIf="filteredTasks.length > 0">
@@ -31,7 +58,7 @@
   >
     <mat-card class="task-card">
       <mat-card-title
-        style="margin-left: 14px; font-weight: bold; font-style:normal"
+        style="margin-left: 14px; font-weight: bold; font-style: normal"
       >
         {{ task.title.toLocaleUpperCase() }}
       </mat-card-title>

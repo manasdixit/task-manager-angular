@@ -7,21 +7,30 @@
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Title</mat-label>
-        <input matInput formControlName="title" />
+        <input style="height: 100px" matInput formControlName="title" />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Description</mat-label>
+        <mat-label *ngIf="!taskForm.controls['description'].value"
+          >Description</mat-label
+        >
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Due Date</mat-label>
-        <input type="date" matInput formControlName="dueDate">
+        <input
+          style="height: 100px"
+          type="date"
+          matInput
+          formControlName="dueDate"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Priority</mat-label>
+        <mat-label *ngIf="!taskForm.controls['priority'].value"
+          >Priority</mat-label
+        >
         <mat-select formControlName="priority">
           <mat-option value="low">Low</mat-option>
           <mat-option value="medium">Medium</mat-option>
@@ -30,7 +39,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Status</mat-label>
+        <mat-label *ngIf="!taskForm.controls['status'].value">Status</mat-label>
         <mat-select formControlName="status">
           <mat-option value="pending">Pending</mat-option>
           <mat-option value="in progress">In Progress</mat-option>
@@ -39,7 +48,7 @@
       </mat-form-field>
 
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button mat-raised-button color="primary" style="color: green;" type="submit">Save</button>
       </div>
     </form>
   </mat-card-content>
