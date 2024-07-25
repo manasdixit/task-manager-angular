@@ -1,0 +1,11 @@
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  mat-card {
+    margin-bottom: 16px;
+  }
+  

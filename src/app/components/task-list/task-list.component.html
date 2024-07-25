@@ -1,0 +1,28 @@
+<div class="filter-bar">
+  <button mat-button (click)="filterTasks('all')">All</button>
+  <button mat-button (click)="filterTasks('completed')">Completed</button>
+  <button mat-button (click)="filterTasks('pending')">Pending</button>
+  <button mat-raised-button color="primary" (click)="addTask()">
+    Add Task
+  </button>
+</div>
+
+<mat-grid-list
+  cols="1"
+  gutterSize="16px"
+  rowHeight="fit"
+  *ngIf="filteredTasks.length > 0"
+>
+  <mat-grid-tile *ngFor="let task of filteredTasks">
+    <mat-card>
+      <mat-card-title>{{ task.title }}</mat-card-title>
+      <mat-card-content>{{ task.description }}</mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="editTask(task)">Edit</button>
+        <button mat-button (click)="deleteTask(task.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<p *ngIf="filteredTasks.length === 0">No tasks found.</p>

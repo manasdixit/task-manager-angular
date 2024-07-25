@@ -1,0 +1,21 @@
+.register-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.register-card {
+  width: 400px;
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}

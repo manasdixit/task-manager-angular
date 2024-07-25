@@ -1,0 +1,21 @@
+.task-form-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.cdk-overlay-container {
+  position: absolute;
+  z-index: 1000;
+}
