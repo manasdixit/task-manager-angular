@@ -27,8 +27,25 @@
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions class="actions">
-        <button mat-raised-button color="primary" type="submit">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="full-width"
+        >
           Register
+        </button>
+      </mat-card-actions>
+
+      <mat-card-actions class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          class="full-width"
+          aria-label="Already registered?"
+          (click)="navigateToLogin()"
+        >
+         Already registered? Login
         </button>
       </mat-card-actions>
     </mat-card>

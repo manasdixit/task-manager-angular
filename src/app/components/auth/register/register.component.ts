@@ -22,6 +22,10 @@ export class RegisterComponent {
     });
   }
 
+  navigateToLogin(){
+    this.router.navigate(['/login']);
+  }
+
   onSubmit(): void {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe(

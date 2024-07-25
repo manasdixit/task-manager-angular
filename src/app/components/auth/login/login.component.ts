@@ -27,6 +27,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
         (response: any) => {
+          console.log('response :: ', response);
+          localStorage.removeItem('token');
           localStorage.setItem('token', response.token);
           this.router.navigate(['/tasks']);
         },
@@ -38,6 +40,10 @@ export class LoginComponent {
     } else {
       this.loginError = 'Please fill out all fields.';
     }
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']);
   }
 
   get username() {
