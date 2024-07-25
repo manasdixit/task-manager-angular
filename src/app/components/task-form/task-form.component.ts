@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-form',
@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-form.component.css'],
 })
 export class TaskFormComponent implements OnInit {
-  @Input() task: Task | null = null;
+  public taskId: string = '';
   taskForm: FormGroup;
   public isEdit: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
@@ -28,15 +29,34 @@ export class TaskFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.task) {
-      this.taskForm.patchValue(this.task);
-    }
+    this.route.params.subscribe((params) => {
+      this.taskId = params['id'];
+      if (this.taskId) {
+        this.taskService.getTasks().subscribe((tasks) => {
+          console.log('tasks :: ', tasks);
+
+          // Find the task with the matching ID
+          const task = tasks.find((t: any) => t._id === this.taskId);
+          if (task) {
+            console.log('Found task:', task);
+            this.taskForm.patchValue({
+              title: task.title,
+              description: task.description,
+              status: task.status,
+              priority: task.priority,
+            });
+          } else {
+            console.log('Task not found');
+          }
+        });
+      }
+    });
   }
 
   onSubmit(): void {
     if (this.taskForm.valid) {
-      if (this.task) {
-        this.taskService.updateTask(this.taskForm.value).subscribe((res) => {
+      if (this.taskId) {
+        this.taskService.updateTask(this.taskForm.value, this.taskId).subscribe((res) => {
           this.router.navigate(['/tasks']);
         });
       } else {
