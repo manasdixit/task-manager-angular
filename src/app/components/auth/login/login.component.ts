@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginError: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -25,14 +26,25 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
-        (response : any) => {
+        (response: any) => {
           localStorage.setItem('token', response.token);
           this.router.navigate(['/tasks']);
         },
-        (error : any) => {
+        (error: any) => {
+          this.loginError = 'Invalid username or password.';
           console.error('Login error:', error);
         }
       );
+    } else {
+      this.loginError = 'Please fill out all fields.';
     }
+  }
+
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
   }
 }

@@ -41,7 +41,10 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['/tasks/new']);
   }
 
-  logOut() {}
+  logOut(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']); // Replace with your actual route
+  }
 
   filterTasks(status: string): void {
     if (status === 'all') {
