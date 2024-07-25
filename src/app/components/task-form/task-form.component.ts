@@ -35,7 +35,6 @@ export class TaskFormComponent implements OnInit {
         this.taskService.getTasks().subscribe((tasks) => {
           console.log('tasks :: ', tasks);
 
-          // Find the task with the matching ID
           const task = tasks.find((t: any) => t._id === this.taskId);
           if (task) {
             console.log('Found task:', task);
