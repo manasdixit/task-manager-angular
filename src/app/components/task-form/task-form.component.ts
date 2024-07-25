@@ -11,6 +11,7 @@ import { Task } from '../../models/task.model';
 export class TaskFormComponent implements OnInit {
   @Input() task: Task | null = null;
   taskForm: FormGroup;
+  public isEdit: boolean = false;
 
   constructor(private fb: FormBuilder, private taskService: TaskService) {
     this.taskForm = this.fb.group({
