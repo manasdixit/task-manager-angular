@@ -18,11 +18,23 @@ export class TaskListComponent implements OnInit {
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.filteredTasks = tasks;
+      console.log('this.filteredTasks :: ', this.filteredTasks);
     });
   }
 
-  editTask(task: any) {}
-  deleteTask(task: any) {}
+  editTask(task: any) {
+    // Navigate to edit task component
+    this.router.navigate(['/tasks/edit', task._id]);
+  }
+
+  deleteTask(taskId: string) {
+    // Call delete API and update the tasks list
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.tasks = this.tasks.filter(task => task.id !== taskId);
+      this.filteredTasks = this.filteredTasks.filter(task => task.id !== taskId);
+    });
+  }
+
   addTask() {
     this.router.navigate(['/tasks/new']);
   }

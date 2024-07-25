@@ -1,11 +1,10 @@
 .filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  mat-card {
-    margin-bottom: 16px;
-  }
-  
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-card {
+  width: 100%;
+  margin-bottom: 20px;
+}
